@@ -1,0 +1,196 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Maria Ansari portfolio design system.
+ * Palette inspired by powder blue + muted coral.
+ * All colors are oklch tokens. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-coral: var(--coral);
+  --color-coral-foreground: var(--coral-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+}
+
+:root {
+  --radius: 0.875rem;
+  /* Off White #F7F8F8 */
+  --background: oklch(0.978 0.002 240);
+  /* Deep Slate #243746 */
+  --foreground: oklch(0.317 0.032 246);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.317 0.032 246);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.317 0.032 246);
+  /* Powder Blue #AFC9D8 -> deepened for contrast */
+  --primary: oklch(0.62 0.058 234);
+  --primary-foreground: oklch(0.99 0.002 240);
+  /* Soft Gray #E8EEF1 */
+  --secondary: oklch(0.943 0.009 227);
+  --secondary-foreground: oklch(0.317 0.032 246);
+  --muted: oklch(0.943 0.009 227);
+  --muted-foreground: oklch(0.52 0.024 245);
+  /* Soft Blue #C9DCE5 */
+  --accent: oklch(0.885 0.026 226);
+  --accent-foreground: oklch(0.317 0.032 246);
+  /* Muted Coral #D98F91 */
+  --coral: oklch(0.703 0.083 19);
+  --coral-foreground: oklch(0.99 0.002 240);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.9 0.014 227);
+  --input: oklch(0.9 0.014 227);
+  --ring: oklch(0.62 0.058 234);
+  --shadow-soft: 0 1px 2px oklch(0.317 0.032 246 / 0.04), 0 8px 24px -12px oklch(0.317 0.032 246 / 0.14);
+  --shadow-lift: 0 2px 4px oklch(0.317 0.032 246 / 0.05), 0 18px 40px -18px oklch(0.317 0.032 246 / 0.24);
+  --gradient-accent: linear-gradient(120deg, var(--primary), var(--coral));
+  --gradient-halo: radial-gradient(60% 60% at 50% 40%, oklch(0.885 0.026 226 / 0.55), transparent 70%);
+}
+
+.dark {
+  /* Dark Background #0E1720 */
+  --background: oklch(0.19 0.019 245);
+  --foreground: oklch(0.955 0.005 230);
+  --card: oklch(0.235 0.022 245);
+  --card-foreground: oklch(0.955 0.005 230);
+  --popover: oklch(0.235 0.022 245);
+  --popover-foreground: oklch(0.955 0.005 230);
+  --primary: oklch(0.8 0.045 231);
+  --primary-foreground: oklch(0.19 0.019 245);
+  --secondary: oklch(0.28 0.024 245);
+  --secondary-foreground: oklch(0.955 0.005 230);
+  --muted: oklch(0.28 0.024 245);
+  --muted-foreground: oklch(0.735 0.017 235);
+  --accent: oklch(0.33 0.03 240);
+  --accent-foreground: oklch(0.955 0.005 230);
+  --coral: oklch(0.755 0.088 20);
+  --coral-foreground: oklch(0.19 0.019 245);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.8 0.045 231);
+  --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.3), 0 10px 28px -14px oklch(0 0 0 / 0.6);
+  --shadow-lift: 0 2px 6px oklch(0 0 0 / 0.35), 0 20px 46px -18px oklch(0 0 0 / 0.7);
+  --gradient-halo: radial-gradient(60% 60% at 50% 40%, oklch(0.8 0.045 231 / 0.2), transparent 70%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition:
+      background-color 400ms ease,
+      color 400ms ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility text-gradient-accent {
+  background-image: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility halo {
+  background-image: var(--gradient-halo);
+}
+
+@utility card-surface {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease,
+    border-color 300ms ease;
+}
+
+@utility card-hover {
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+    border-color: color-mix(in oklab, var(--color-primary) 45%, transparent);
+  }
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
