@@ -33,17 +33,26 @@ const allowedOrigins = [
   "http://127.0.0.1:8080",
   "http://localhost:5173",
   "http://127.0.0.1:5173",
+  "https://maria-ansari-portfolio.vercel.app",
 ];
 
 app.use(
   cors({
-    origin(origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Origin not allowed by CORS"));
+    origin: (origin, callback) => {
+      // Allow requests without an Origin header
+      // such as Postman/server-to-server requests.
+      if (!origin) {
+        return callback(null, true);
       }
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error(`CORS blocked origin: ${origin}`));
     },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
